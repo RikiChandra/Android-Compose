@@ -69,10 +69,10 @@ fun MovieDetail(
         AsyncImage(
             model = movie.poster,
             contentDescription = null,
-            contentScale = ContentScale.FillWidth,
+            contentScale = ContentScale.FillBounds,
             modifier = Modifier
                 .fillMaxWidth()
-                .height(200.dp)
+                .height(500.dp)
         )
         Spacer(modifier = Modifier.height(16.dp))
         Text(
