@@ -12,14 +12,16 @@ import androidx.compose.material.IconButton
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.Person
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.dicoding.movie.R
 import com.dicoding.movie.componet.MovieListItem
 import com.dicoding.movie.componet.SearchBar
 import com.dicoding.movie.componet.UiState
@@ -30,21 +32,18 @@ import com.dicoding.movie.viewmodel.ViewModelFactory
 
 @Composable
 fun HomeScreen(
-    modifier: Modifier = Modifier,
     viewModel: MainViewModel = viewModel(factory = ViewModelFactory(Injection.provideMovieRepository())),
     navigateToDetail: (Int) -> Unit,
     navController: NavController = rememberNavController()
 ) {
     Column{
         TopAppBar(
-            title = { Text(text = "Movie App") },
-            backgroundColor = Color.Blue,
-            contentColor = Color.White,
+            title = { Text(text = stringResource(R.string.appName)) },
             actions = {
-                IconButton(onClick = { navController.navigate("favorite")
+                IconButton(onClick = { navController.navigate("about")
 
                 }) {
-                    Icon(Icons.Filled.Favorite, contentDescription = "Favorite")
+                    Icon(Icons.Filled.Person, contentDescription = "about")
                 }
             }
 

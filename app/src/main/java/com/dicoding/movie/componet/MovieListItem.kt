@@ -1,6 +1,6 @@
 package com.dicoding.movie.componet
 
-import androidx.compose.foundation.clickable
+
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -28,7 +28,7 @@ fun MovieListItem(
     Card(
         modifier = modifier
             .fillMaxWidth()
-            .padding(vertical = 8.dp), // Menambahkan jarak vertikal antara kartu
+            .padding(vertical = 8.dp),
         elevation = 4.dp,
         shape = RoundedCornerShape(8.dp)
     ) {
@@ -55,7 +55,7 @@ fun MovieListItem(
     }
 }
 
-@Preview(showBackground = true, )
+@Preview(showBackground = true)
 @Composable
 fun MovieListItemPreview() {
     MovieListItem(

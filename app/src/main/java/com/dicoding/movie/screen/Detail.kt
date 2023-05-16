@@ -1,7 +1,6 @@
 package com.dicoding.movie.screen
 
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
@@ -24,7 +23,6 @@ import com.dicoding.movie.viewmodel.ViewModelFactory
 
 @Composable
 fun DetailScreen(
-    modifier: Modifier = Modifier,
     movieId: Int,
     viewModel: DetailViewModel = viewModel(factory = ViewModelFactory(Injection.provideMovieRepository()) )
     ) {
@@ -45,16 +43,6 @@ fun DetailScreen(
                                 stringResource(id = com.dicoding.movie.R.string.app_name),
                                 color = Color.White,
                             )
-                        },
-                        actions = {
-                            IconButton(onClick = {
-
-                            }) {
-                                Text(
-                                    text = "#%03d".format(movieId),
-                                    color = Color.White,
-                                )
-                            }
                         }
                     )
 
@@ -81,7 +69,7 @@ fun MovieDetail(
         AsyncImage(
             model = movie.poster,
             contentDescription = null,
-            contentScale = ContentScale.Crop,
+            contentScale = ContentScale.FillWidth,
             modifier = Modifier
                 .fillMaxWidth()
                 .height(200.dp)
@@ -109,13 +97,13 @@ fun MovieDetail(
 }
 
 
-@Preview(showBackground = true, )
+@Preview(showBackground = true)
 @Composable
 fun MovieDetailPreview() {
     MovieDetail(
         movie = Movie(
             id = 1,
-            title = "Movie Name",
+            title = "Tom & Jerry",
             genre = "Action",
             year = 2021,
             poster = "https://image.tmdb.org/t/p/w500/6KErczPBROQty7QoIsaa6wJYXZi.jpg"

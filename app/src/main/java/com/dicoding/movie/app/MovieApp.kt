@@ -1,7 +1,6 @@
 package com.dicoding.movie.app
 
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
@@ -10,12 +9,12 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.dicoding.movie.route.Screen
+import com.dicoding.movie.screen.AboutScreen
 import com.dicoding.movie.screen.DetailScreen
 import com.dicoding.movie.screen.HomeScreen
 
 @Composable
 fun MovieApp(
-    modifier: Modifier = Modifier,
     navController: NavHostController = rememberNavController()
 ) {
 
@@ -23,7 +22,6 @@ fun MovieApp(
         startDestination = Screen.Home.route){
         composable(route = Screen.Home.route){
             HomeScreen(
-                modifier = modifier,
                 navigateToDetail = { movieId ->
                     navController.navigate(Screen.Detail.createRoute(movieId))
                 },
@@ -37,6 +35,10 @@ fun MovieApp(
             DetailScreen(movieId = movieId)
 
         }
+        composable(Screen.About.route){
+            AboutScreen(navigateUp = { navController.navigateUp() })
+        }
+
     }
 
 }

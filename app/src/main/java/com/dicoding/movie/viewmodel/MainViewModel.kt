@@ -12,8 +12,8 @@ import kotlinx.coroutines.launch
 
 class MainViewModel(private val movieRepository: MovieRepository): ViewModel() {
 
-    private val _Ui_state: MutableStateFlow<UiState<List<Movie>>> = MutableStateFlow(UiState.Loading)
-    val uiState: StateFlow<UiState<List<Movie>>> get() = _Ui_state
+    private val _Uistate: MutableStateFlow<UiState<List<Movie>>> = MutableStateFlow(UiState.Loading)
+    val uiState: StateFlow<UiState<List<Movie>>> get() = _Uistate
 
     private val _movie = MutableStateFlow<Map<Char, List<Movie>>>(emptyMap())
     val movie: StateFlow<Map<Char, List<Movie>>> get() = _movie
@@ -26,9 +26,9 @@ class MainViewModel(private val movieRepository: MovieRepository): ViewModel() {
 
     fun search(query: String) {
         _searchQuery.value = query
-        _Ui_state.value = UiState.Loading
+        _Uistate.value = UiState.Loading
         _movie.value = movieRepository.searchMovie(_searchQuery.value).groupBy { it.title.firstOrNull()?.uppercaseChar() ?: '#' }
-        _Ui_state.value = UiState.Success(movieRepository.searchMovie(_searchQuery.value))
+        _Uistate.value = UiState.Success(movieRepository.searchMovie(_searchQuery.value))
     }
 
 
@@ -36,11 +36,11 @@ class MainViewModel(private val movieRepository: MovieRepository): ViewModel() {
     fun getMovie(){
         viewModelScope.launch {
             movieRepository.getMovieAll().onStart {
-                _Ui_state.value = UiState.Loading
+                _Uistate.value = UiState.Loading
             }.catch {
-                _Ui_state.value = UiState.Error(it)
+                _Uistate.value = UiState.Error(it)
             }.collect {
-                _Ui_state.value = UiState.Success(it)
+                _Uistate.value = UiState.Success(it)
             }
         }
     }
