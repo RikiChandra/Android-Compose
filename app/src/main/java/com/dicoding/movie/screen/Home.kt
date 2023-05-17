@@ -15,7 +15,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -43,7 +42,7 @@ fun HomeScreen(
                 IconButton(onClick = { navController.navigate("about")
 
                 }) {
-                    Icon(Icons.Filled.Person, contentDescription = "about")
+                    Icon(Icons.Filled.Person, contentDescription = stringResource(R.string.about_page))
                 }
             }
 

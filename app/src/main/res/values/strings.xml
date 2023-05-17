@@ -3,8 +3,9 @@
     <string name="appName">Movie App</string>
     <string name="source_photo">https://avatars.githubusercontent.com/u/49185211?v=4</string>
     <string name="name">Riki Chandra</string>
-    <string name="jobs">Android Developer</string>
+    <string name="jobs">rikichandra11317@gmail.com</string>
     <string name="title_page_about">About</string>
     <string name="back">Back</string>
     <string name="search">Search Movie</string>
+    <string name="about_page">about_page</string>
 </resources>
